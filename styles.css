@@ -1,6 +1,8 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    transition: all 0.5 s ease-in-out;
     /* background-color: var(--dark); */
 }
 
@@ -21,11 +23,29 @@
     --light: #e0e0e0;
     --lighter: #f5f5f5;
     --divider: #ebebeb;
+    --highlight: #4070f4;
+    --danger: #ff4444;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+}
+
+section {
+    margin: 100px 60px 0px 60px;
+    flex: 1;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 nav {
     position: fixed;
-    background-color: white;
+    background: white;
+    z-index: 10;
     top: 0px;
     width: 100vw;
     padding: 12px 0px;
@@ -63,13 +83,17 @@ a {
     font-weight: bold;
     /* border: 2px solid red; */
 }
-
+.nav_link {
+    margin: 0px 10px;
+}
 .nav_link:hover {
-    color: darkblue;
+    color: var(--highlight);
 }
 
 .active_link {
-    border-bottom: 2px solid;
+    /* padding-bottom: 1.5px;
+    border-bottom: 3px solid; */
+    color: var(--highlight);
 }
 
 .user_container {
@@ -77,8 +101,25 @@ a {
     padding-left: 10px;
 }
 
+#logOut-button {
+    margin: 0px;
+    width: 100%;
+    background: none;
+    border: none;
+    border-radius: inherit;
+    padding: 0px;
+    font-weight: bold;
+    font-size: 15px !important;
+}
+
+#logOut-button:hover {
+    color: var(--highlight);
+}
+
 #bill_button {
     border: 2px solid var(--dark);
+    padding: 11px 10px;
+    border-radius: 10px;
     background-color: white;
     font-weight: bold;
 }
@@ -88,7 +129,39 @@ a {
     color: white;
 }
 
+#user-button {
+    padding: 12px 5px;
+    border-radius: 10px;
+}
 
+#user-button a {
+    padding: inherit;
+    border-radius: inherit;
+}
+
+#user-options {
+    background: white;
+    position: absolute;
+    top: 68px;
+    right: 55px;
+    border: 2px solid var(--divider);
+    /* border-top: none; */
+    border-radius: 8px 8px 8px 8px;
+    box-shadow: 0px 0px 5px 0px var(--divider);
+    font-size: 15px;
+}
+
+#user-options li {  
+    list-style-type: none;
+    padding: 12px 10px;
+    text-align: center;
+}
+
+#user-options li:nth-child(1) {
+    border-bottom: 2px solid var(--divider);
+}
+
+/* BUTTON */
 button {
     border: 2px solid var(--lighter);
     padding: 12px 20px;
@@ -103,21 +176,70 @@ button:hover {
     border: 2px solid var(--light);
 }
 
+/* FOOTER */
 footer {
     background-color: white;
     border-top: 2px solid var(--divider);
     text-align: center;
-    margin-top: 30px;
+    margin-top: 20px;
     padding: 15px 0px;
 }
 
-section {
-    margin: 100px 60px 0px 60px;
-}
-
-body {
+/* FORM */
+form {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    min-height: 100vh;
+    min-width: 500px;
+    overflow: hidden;
+    border: 2px solid var(--divider);
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0px 0px 10px 1px var(--divider);
+}
+
+form header {
+    font-weight: bold;
+    color: var(--dark);
+}
+
+.form-section {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+form label {
+    font-size: small;
+    font-weight: 600;
+}
+
+form input {
+    padding: 12px;
+    border-radius: 5px;
+    border: 2px solid var(--divider);
+}
+
+form .err-mssgs{
+    bottom: -20px;
+    left: 5px;
+    position: absolute;
+    font-weight: bold;
+    font-style: italic;
+    font-size: x-small;
+    color: var(--danger);
+}
+
+.form-info {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 12px;
+}
+
+.form-button {
+    font-size: small;
+    font-weight: bold;
+    padding: 0px;
+    background: none !important;
+    border: none !important;
+    color: var(--highlight);
 }

@@ -11,15 +11,27 @@ const nav = `
         <a class="nav_link" href="history.html">Order history</a>
 
         <div class="user_container">
-            <a href="bill.html">
+                <a href="bill.html">
                 <button id="bill_button">
-                    Bill <i class="fa-solid fa-file-invoice"></i>
+                    Bill
+                    <i class="fa-solid fa-file-invoice"></i>
                 </button>
-            </a>
-            <a href="login.html">
-                <button id="sign_in_button">Sign in 
-                    <i class="fa fa-user-circle-o" aria-hidden="true"></i></button>
-            </a>
+                </a>
+
+                <button id="user-button">
+                    <a href="login.html">
+                        Sign in
+                        <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                    </a>
+                </button>
+                
+                <div id="user-options">
+                    <li>
+                    <a class="nav_link" href="customer_support.html">Customer Support</a></li>
+                    <button id="logOut-button">
+                    <li> Log Out</li>
+                    </button>
+                </div>
         </div>
     </div>
 </nav>

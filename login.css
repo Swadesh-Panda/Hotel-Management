@@ -1,0 +1,41 @@
+#form-login,#form-signup {
+    min-width: 350px;
+}
+
+#form-login header,#form-signup header {
+    text-align: center;
+    font-size: larger;
+}
+
+#form-login .form-section,#form-signup .form-section {
+    grid-template-columns: 100%;
+}
+
+#signup-prompt {
+    font-size: small;
+    text-align: center;
+}
+
+#reset-button {
+    position:absolute;
+    padding: 5px;
+    top: 20px;
+    right: 20px;
+    color: var(--dark);
+    font-size: large;
+}
+
+#reset-button:hover {
+    color: var(--highlight);
+}
+
+#quip {
+    display: flex;
+    flex-direction: column;
+    font-size: larger;
+}
+
+#quip h1 {
+    margin-bottom: 30px;
+    font-size: 50px;
+}
