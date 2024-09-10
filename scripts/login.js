@@ -1,4 +1,4 @@
-if (username) location = '/'
+if (username) location = 'index.html'
 
 const formLogin = document.getElementById('form-login')
 const formPersonal = document.getElementById('form-personal')
@@ -41,7 +41,7 @@ const handleLogin = (e) => {
         }
     }
 
-    if (flag) location.reload()
+    if (flag) location = 'index.html'
 }
 
 const handlePersonalData = (e) => {
@@ -68,6 +68,6 @@ const handleSignup = (e) => {
     if (newPassword === confirmPassword) {
         setItem('username', newUsername)
         setItem('password', newPassword)
-        location.reload()
+        location = 'index.html'
     }
 }

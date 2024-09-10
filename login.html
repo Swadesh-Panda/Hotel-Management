@@ -7,13 +7,39 @@
       content="width=device-width, initial-scale=1.0"
     />
     <title>BarelyBnB</title>
-    <link rel="stylesheet" href="styles.css"/>
-    <link rel="stylesheet" href="login.css"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-    <link href="https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&display=swap" rel="stylesheet"/>
-    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3729/3729184.png"/>
-    <script src="https://kit.fontawesome.com/e751773191.js" crossorigin="anonymous"></script>
+    <link
+      rel="stylesheet"
+      href="css/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      href="css/login.css"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      href="https://cdn-icons-png.flaticon.com/512/3729/3729184.png"
+    />
+    <link
+      rel="stylesheet"
+      href="css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="css/fontawesome.min.css"
+    />
   </head>
 
   <body>
@@ -24,109 +50,227 @@
         <p>Welcome to barelybnb!</p>
       </div>
 
-      <form method="post" action="#" id="form-personal" style="position: relative;">
-        
-        <button type="reset" id="reset-button" class="form-button">
-          <i class="fa fa-refresh" aria-hidden="true"></i>
+      <form
+        method="post"
+        action="#"
+        id="form-personal"
+        style="position: relative"
+      >
+        <button
+          type="reset"
+          id="reset-button"
+          class="form-button"
+        >
+          <i
+            class="fa fa-refresh"
+            aria-hidden="true"
+          ></i>
         </button>
 
         <header>Personal Details</header>
 
-        <div class="form-section" >
+        <div class="form-section">
           <div class="form-info">
             <label for="fname">First Name</label>
-            <input required type="text" id="fname" name="fname" placeholder="John">
+            <input
+              required
+              type="text"
+              id="fname"
+              name="fname"
+              placeholder="John"
+            />
           </div>
           <div class="form-info">
             <label for="lname">Last Name</label>
-            <input required type="text" id="lname" name="lname" placeholder="Doe">
+            <input
+              required
+              type="text"
+              id="lname"
+              name="lname"
+              placeholder="Doe"
+            />
           </div>
           <div class="form-info">
             <label for="email">Email</label>
-            <input required type="email" id="email" name="email" placeholder="sample20@email.com">
+            <input
+              required
+              type="email"
+              id="email"
+              name="email"
+              placeholder="sample20@email.com"
+            />
           </div>
           <div class="form-info">
             <label for="contact">Mobile Number</label>
-            <input required type="number" id="contact" name="contact" placeholder="+91 - XXXXXXXXXX">
+            <input
+              required
+              type="number"
+              id="contact"
+              name="contact"
+              placeholder="+91 - XXXXXXXXXX"
+            />
           </div>
         </div>
 
-        <br>
-        
+        <br />
+
         <header>Address Details</header>
-        <div class="form-section" >
+        <div class="form-section">
           <div class="form-info">
             <label for="country">Nationality</label>
-            <input required type="text" id="country" name="country" placeholder="India">
+            <input
+              required
+              type="text"
+              id="country"
+              name="country"
+              placeholder="India"
+            />
           </div>
           <div class="form-info">
             <label for="state">State</label>
-            <input required type="text" id="state" name="state" placeholder="Hyderabad">
+            <input
+              required
+              type="text"
+              id="state"
+              name="state"
+              placeholder="Hyderabad"
+            />
           </div>
           <div class="form-info">
             <label for="address">Address line 1</label>
-            <input required type="text" id="address" name="address" placeholder="Plot 6A, Hell's K...">
+            <input
+              required
+              type="text"
+              id="address"
+              name="address"
+              placeholder="Plot 6A, Hell's K..."
+            />
           </div>
           <div class="form-info">
             <label for="pincode">Pin Code</label>
-            <input required type="number" id="pincode" name="pincode" placeholder="750XXX">
+            <input
+              required
+              type="number"
+              id="pincode"
+              name="pincode"
+              placeholder="750XXX"
+            />
           </div>
         </div>
 
-        <br>
+        <br />
 
-        <button type="submit" onclick="handlePersonalData(event)">Submit</button>
+        <button
+          type="submit"
+          onclick="handlePersonalData(event)"
+        >
+          Submit
+        </button>
       </form>
 
-      <form method="post" action="#" id="form-signup">
+      <form
+        method="post"
+        action="#"
+        id="form-signup"
+      >
         <header>Sign Up</header>
-        <div class="form-section" >
+        <div class="form-section">
           <div class="form-info">
             <label for="newUsername">Username</label>
-            <input required type="text" id="newUsername" name="newUsername" placeholder="John Doe">
+            <input
+              required
+              type="text"
+              id="newUsername"
+              name="newUsername"
+              placeholder="John Doe"
+            />
           </div>
           <div class="form-info">
             <label for="newPassword">Password</label>
-            <input required type="password" id="newPassword" name="newPassword" placeholder="min. 8 characters">
-          </div>  
+            <input
+              required
+              type="password"
+              id="newPassword"
+              name="newPassword"
+              placeholder="min. 8 characters"
+            />
+          </div>
           <div class="form-info">
             <label for="confirmPassword">Confirm Password</label>
-            <input required type="password" id="confirmPassword" name="confirmPassword" placeholder="re-type password">
+            <input
+              required
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              placeholder="re-type password"
+            />
           </div>
         </div>
 
-        <br>
+        <br />
 
-        <button type="submit" onclick="handleSignup(event)">Sign Up</button>
+        <button
+          type="submit"
+          onclick="handleSignup(event)"
+        >
+          Sign Up
+        </button>
       </form>
 
-      
-      <form method="post" id="form-login">
+      <form
+        method="post"
+        id="form-login"
+      >
         <header>Sign In</header>
-        <div class="form-section" >
+        <div class="form-section">
           <div class="form-info">
             <label for="username">Username</label>
-            <input required type="text" id="username" name="username" placeholder="John Doe">
+            <input
+              required
+              type="text"
+              id="username"
+              name="username"
+              placeholder="John Doe"
+            />
           </div>
           <div class="form-info">
             <label for="password">Password</label>
-            <input required type="password" id="password" name="password" placeholder="min. 8 characters">
+            <input
+              required
+              type="password"
+              id="password"
+              name="password"
+              placeholder="min. 8 characters"
+            />
           </div>
         </div>
 
-        <br>
+        <br />
 
-        <button type="submit" onclick="handleLogin(event)">Sign in</button>
+        <button
+          type="submit"
+          onclick="handleLogin(event)"
+        >
+          Sign in
+        </button>
 
-        <br>
-        
-        <p id="signup-prompt">New to barelybnb ? <button type="button" class="form-button" onclick="displaySignup()">Sign Up</button></p>
+        <br />
+
+        <p id="signup-prompt">
+          New to barelybnb ?
+          <button
+            type="button"
+            class="form-button"
+            onclick="displaySignup()"
+          >
+            Sign Up
+          </button>
+        </p>
       </form>
-
     </section>
   </body>
 
-  <script src="template.js"></script>
-  <script src="script.js"></script>
-  <script src="login.js"></script>
+  <script src="scripts/template.js"></script>
+  <script src="scripts/script.js"></script>
+  <script src="scripts/login.js"></script>
 </html>

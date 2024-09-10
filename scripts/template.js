@@ -21,7 +21,7 @@ const nav = `
                 <button id="user-button">
                     <a href="login.html">
                         Sign in
-                        <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                        <i class="fa-regular fa-circle-user"></i>
                     </a>
                 </button>
                 

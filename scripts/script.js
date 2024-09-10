@@ -2,6 +2,8 @@ const setItem = localStorage.setItem.bind(localStorage)
 const getItem = localStorage.getItem.bind(localStorage)
 
 const username = getItem('username')
+const loggedIn = getItem('loggedIn')
+
 const userButton = document.querySelector('#user-button')
 const userOptions = document.querySelector('#user-options')
 const logOutButton = document.querySelector('#logOut-button')
@@ -48,7 +50,7 @@ if (username) {
 
     logOutButton.addEventListener('click', (e) => {
         localStorage.clear()
-        location = '/'
+        location = 'index.html'
     })
 }
 
