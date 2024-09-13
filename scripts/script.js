@@ -1,12 +1,14 @@
-const setItem = localStorage.setItem.bind(localStorage)
-const getItem = localStorage.getItem.bind(localStorage)
+const saveJson = (key, val) => localStorage.setItem(key, JSON.stringify(val))
+const getJson = (key) => JSON.parse(localStorage.getItem(key))
+const delItem = (key) => localStorage.removeItem(key)
 
-const username = getItem('username')
-const loggedIn = getItem('loggedIn')
+const users = getJson('users') || []
+const CurrentUser = localStorage.getItem('CurrentUser')
 
 const userButton = document.querySelector('#user-button')
 const userOptions = document.querySelector('#user-options')
 const logOutButton = document.querySelector('#logOut-button')
+const loginLink = document.querySelector('#login-link')
 
 const navLinks = document.querySelectorAll('.nav_link')
 const pathName = location.pathname
@@ -24,16 +26,15 @@ switch (page) {
         break;
 }
 
-
 navLinks.forEach(link => {
     href = new URL(link).pathname
     if (pathName === href) link.classList.add('active_link')
 })
 
-userOptions.style.display = 'none'
+if (CurrentUser) {
+    loginLink.removeAttribute('href')
 
-if (username) {
-    userButton.innerHTML = `Welcome, ${username}`
+    userButton.innerHTML = `Welcome, ${users.find(user => user.email === CurrentUser).fname}`
 
     userButton.addEventListener('click', (e) => {
         e.stopPropagation()
@@ -49,7 +50,7 @@ if (username) {
     })
 
     logOutButton.addEventListener('click', (e) => {
-        localStorage.clear()
+        delItem('CurrentUser')
         location = 'index.html'
     })
 }
@@ -65,3 +66,15 @@ const showErrors = (ipElement, mssg) => {
     
     ipElement.parentNode.appendChild(err)
 }
+
+const modalElement = document.getElementById('modal')
+const modalContent = document.getElementById('modal-content')
+
+const showModal = (mssg) => {
+    modalElement.style.display = 'flex'
+    modalContent.textContent = mssg
+}
+
+modalContent.addEventListener('click', (e) => {
+    alert.style.display = 'none'
+})

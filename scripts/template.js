@@ -10,28 +10,27 @@ const nav = `
         <a class="nav_link" href="reservations.html">Reservations</a>
         <a class="nav_link" href="history.html">Order history</a>
 
-        <div class="user_container">
+        <div class="user-container">
                 <a href="bill.html">
-                <button id="bill_button">
-                    Bill
-                    <i class="fa-solid fa-file-invoice"></i>
-                </button>
+                    <button class="outline-button">
+                        Bill
+                        <i class="fa-solid fa-file-invoice"></i>
+                    </button>
                 </a>
-
+                
+                <a id='login-link' href="login.html">
                 <button id="user-button">
-                    <a href="login.html">
                         Sign in
                         <i class="fa-regular fa-circle-user"></i>
-                    </a>
                 </button>
+                </a>
                 
-                <div id="user-options">
-                    <li>
-                    <a class="nav_link" href="customer_support.html">Customer Support</a></li>
-                    <button id="logOut-button">
-                    <li> Log Out</li>
-                    </button>
-                </div>
+                <ul id="user-options">
+                    <a href="customer_support.html">
+                    <li><button>Customer Support</button></li>
+                    </a>
+                    <li><button id='logOut-button' onclick='handleLogout(event)'>Log Out</button></li>
+                </ul>
         </div>
     </div>
 </nav>
@@ -39,5 +38,12 @@ const nav = `
 
 const footer = `<footer>All Rights Reserved. Copyright © BarelyBnB Ltd.</footer>`
 
+const modal = `<div id='modal'>
+    <div id='modal-content'>
+        hello world
+</div>
+</div>`
+
 document.body.insertAdjacentHTML('afterbegin', nav)
+document.body.insertAdjacentHTML('beforeend', modal)
 document.body.insertAdjacentHTML('beforeend', footer)
