@@ -44,14 +44,24 @@
 
   <body>
     <section>
-
       <form
         method="post"
         action="#"
-        id="form-bill"
+        id="form-reservation"
         style="position: relative"
       >
-        <header style="text-align: center; font-size:x-large;">Billing Details</header>
+        <header style="text-align: center; font-size: x-large">Reservation</header>
+
+        <button
+          type="reset"
+          id="reset-button"
+          class="form-button"
+        >
+          <i
+            class="fa fa-refresh"
+            aria-hidden="true"
+          ></i>
+        </button>
 
         <br />
 
@@ -61,7 +71,6 @@
             <label for="checkIn">Check-In</label>
             <input
               required
-    	      disabled
               type="date"
               id="checkIn"
               name="checkIn"
@@ -72,7 +81,6 @@
             <label for="checkOut">Check-Out</label>
             <input
               required
-    	      disabled
               type="date"
               id="checkOut"
               name="checkOut"
@@ -81,24 +89,22 @@
           </div>
           <div class="form-info">
             <label for="roomType">Room Type</label>
-	    <select
+            <select
               required
-    	      disabled
               type="select"
               id="roomType"
               name="roomType"
               placeholder="Plot 6A, Hell's K..."
             >
-		<option value="single">Single</option>
-		<option value="double">Double</option>
-		<option value="suite">Suite</option>
-	    </select>
+              <option value="single">Single</option>
+              <option value="double">Double</option>
+              <option value="suite">Suite</option>
+            </select>
           </div>
           <div class="form-info">
             <label for="rsContact">Mobile Number</label>
             <input
               required
-    	      disabled
               type="number"
               id="rsContact"
               name="rsContact"
@@ -107,12 +113,15 @@
           </div>
         </div>
 
+        <br />
+
+        <header>Personal Details</header>
+
         <div class="form-section">
           <div class="form-info">
             <label for="rsFname">First Name</label>
             <input
               required
-    	      disabled
               type="text"
               id="rsFname"
               name="rsFname"
@@ -123,7 +132,6 @@
             <label for="rsLname">Last Name</label>
             <input
               required
-    	      disabled
               type="text"
               id="rsLname"
               name="rsLname"
@@ -134,67 +142,11 @@
 
         <br />
 
-        <header>Payment Details</header>
-
-        <div class="form-section">
-          <div class="form-info">
-            <label for="roomCharges">Room Charges (&#8377)</label>
-            <input
-              required
-    	      disabled
-              type="number"
-              id="roomCharges"
-              name="roomCharges"
-              placeholder="0"
-            />
-          </div>
-          <div class="form-info">
-            <label for="additionalCharges">Additional Charges (&#8377)</label>
-            <input
-              required
-    	      disabled
-              type="number"
-              id="additionalCharges"
-              name="additionalCharges"
-              placeholder="0"
-            />
-          </div>
-        </div>
-
-        <div class="form-section">
-          <div class="form-info">
-            <label for="tip">Tip (&#8377)</label>
-            <input
-              type="number"
-              id="tip"
-              name="tip"
-              placeholder="100"
-            />
-          </div>
-          <div class="form-info">
-            <label for="paymentMode">Payment Mode</label>
-	    <select
-              required
-              type="select"
-              id="paymentMode"
-              name="paymentMode"
-              placeholder="Cash/Card"
-            >
-		<option value="card">Card</option>
-		<option value="cash">Cash</option>
-	    </select>
-          </div>
-        </div>
-
-        <br>
-	    <div style='display:flex; flex-direction:row; justify-content:center; gap:5px'><p>Total (&#8377) : </p><p id='bill-total'>0</p> </div>
-        </br>
-
         <button
           type="submit"
-          onclick="handleBilling(event)"
+          onclick="handleReservation(event)"
         >
-          Pay
+          Submit
         </button>
       </form>
     </section>
@@ -202,5 +154,5 @@
 
   <script src="scripts/template.js"></script>
   <script src="scripts/script.js"></script>
-  <script src="scripts/bill.js"></script>
+  <script src="scripts/reservation.js"></script>
 </html>

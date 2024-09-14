@@ -1,0 +1,22 @@
+#invoice {
+	border-style: dashed;
+	box-shadow: none;
+	flex-direction: column;
+	margin: 20px;
+	size: auto;
+}
+
+#invoice-container {
+	display: flex;
+
+}
+
+@media print {
+	button {
+		display: none;
+	}
+}
+
+@page {
+	size: landscape;
+}

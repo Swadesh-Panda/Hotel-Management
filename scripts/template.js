@@ -7,7 +7,7 @@ const nav = `
     <div class="nav_container">
 
         <a class="nav_link" href="bookings.html">My bookings </a>
-        <a class="nav_link" href="reservations.html">Reservations</a>
+        <a class="nav_link" href="reservation.html">Reservations</a>
         <a class="nav_link" href="history.html">Order history</a>
 
         <div class="user-container">
@@ -38,10 +38,16 @@ const nav = `
 
 const footer = `<footer>All Rights Reserved. Copyright © BarelyBnB Ltd.</footer>`
 
-const modal = `<div id='modal'>
+const modal = `
+<div id='modal'>
+  <div id='modal-container'>
+    <header id='modal-header'>
+    	Title
+    </header>
     <div id='modal-content'>
-        hello world
-</div>
+        Message
+    </div>
+  </div>
 </div>`
 
 document.body.insertAdjacentHTML('afterbegin', nav)

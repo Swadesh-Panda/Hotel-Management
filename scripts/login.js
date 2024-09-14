@@ -26,7 +26,7 @@ const handleLogin = (e) => {
         const username = form.username.value
         const password = form.password.value
 
-        const checkUser = users.find(user => user.email === username || user.customerID === username)
+        const checkUser = users.find(user => user.email === username || user.customerID === parseInt(username))
         if (!checkUser) {
             showErrors(form.username, "No record found")
             return

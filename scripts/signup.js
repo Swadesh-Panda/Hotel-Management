@@ -1,4 +1,4 @@
-if(CurrentUser) location = 'index.html'
+if (CurrentUser) location = 'index.html'
 
 const formPersonal = document.getElementById('form-personal')
 const formSignup = document.getElementById('form-signup')
@@ -10,33 +10,29 @@ formSignup.customerID.value = customerID;
 
 const handlePersonalData = (e) => {
     e.preventDefault();
-    
+
     const form = e.target.closest('form');
 
-    for (element of form.elements)
-    {
+    for (element of form.elements) {
         const inp = document.querySelector(`[name="${element.name}"]`)
         if (!inp) continue;
-                
-        if (!element.value)
-        {
+
+        if (!element.value) {
             showErrors(inp, `${element.name} is required`)
             return
         }
-            
+
         user[element.name] = element.value;
     }
 
     const dupEmailUser = users.find(u => u.email === user.email)
-    if (dupEmailUser)
-    {
+    if (dupEmailUser) {
         showErrors(document.querySelector(`#email`), "email already exists")
         return;
     }
 
     const dupContactUser = users.find(u => u.contact === user.contact)
-    if (dupContactUser)
-    {
+    if (dupContactUser) {
         showErrors(document.querySelector('#contact'), "contact already exists")
         return
     }
@@ -64,10 +60,7 @@ const handleSignup = (e) => {
     user.password = newPassword
     users.push(user)
     saveJson('users', users)
-    localStorage.setItem('CurrentUser',user.email)
-    
-    showModal('Consumer Registration Successful')
-    modalElement.addEventListener('click', (e) => {
-        location = 'index.html'
-    })
+    localStorage.setItem('CurrentUser', user.email)
+
+    showModal('Registration Successful', `Customer Id : ${customerID}`, () => { location = 'index.html' })
 }

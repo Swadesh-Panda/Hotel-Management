@@ -34,7 +34,7 @@ navLinks.forEach(link => {
 if (CurrentUser) {
     loginLink.removeAttribute('href')
 
-    userButton.innerHTML = `Welcome, ${users.find(user => user.email === CurrentUser).fname}`
+    userButton.innerHTML = `Hello, ${users.find(user => user.email === CurrentUser).fname}`
 
     userButton.addEventListener('click', (e) => {
         e.stopPropagation()
@@ -63,18 +63,23 @@ const showErrors = (ipElement, mssg) => {
     const oldErrors = ipElement.parentNode.querySelectorAll('.err-mssgs')
     oldErrors.forEach(element => element.remove())
 
-    
+
     ipElement.parentNode.appendChild(err)
 }
 
 const modalElement = document.getElementById('modal')
+const modalHeader = document.getElementById('modal-header')
 const modalContent = document.getElementById('modal-content')
 
-const showModal = (mssg) => {
+const showModal = (title, mssg, action) => {
     modalElement.style.display = 'flex'
+    modalHeader.textContent = title
     modalContent.textContent = mssg
-}
 
-modalContent.addEventListener('click', (e) => {
-    alert.style.display = 'none'
-})
+
+    modalElement.addEventListener('click', (e) => {
+        modalElement.style.display = 'none'
+
+        action();
+    })
+}

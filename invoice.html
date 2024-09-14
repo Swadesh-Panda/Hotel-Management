@@ -13,6 +13,10 @@
     />
     <link
       rel="stylesheet"
+      href="css/invoice.css"
+    />
+    <link
+      rel="stylesheet"
       href="css/login.css"
     />
     <link
@@ -43,18 +47,19 @@
   </head>
 
   <body>
-    <section>
+    <section style="margin:0px; flex-direction: column; justify-content: center;">
 
       <form
         method="post"
         action="#"
-        id="form-bill"
-        style="position: relative"
+        id="invoice"
       >
-        <header style="text-align: center; font-size:x-large;">Billing Details</header>
+        <header style="text-align: center; font-size:x-large;">INVOICE</header>
 
         <br />
 
+     <div id="invoice-container">
+	<div>			
         <header>Check-In Details</header>
         <div class="form-section">
           <div class="form-info">
@@ -131,9 +136,11 @@
             />
           </div>
         </div>
+	</div>
 
         <br />
-
+	
+	<div style='border-left: 2px dashed var(--divider); padding-left: 15px; margin-left: 10px;'>
         <header>Payment Details</header>
 
         <div class="form-section">
@@ -165,16 +172,17 @@
           <div class="form-info">
             <label for="tip">Tip (&#8377)</label>
             <input
+	      disabled
               type="number"
               id="tip"
               name="tip"
-              placeholder="100"
+              placeholder="0"
             />
           </div>
           <div class="form-info">
             <label for="paymentMode">Payment Mode</label>
 	    <select
-              required
+	      disabled
               type="select"
               id="paymentMode"
               name="paymentMode"
@@ -185,22 +193,19 @@
 	    </select>
           </div>
         </div>
+	</div>
+
+    </div>
 
         <br>
-	    <div style='display:flex; flex-direction:row; justify-content:center; gap:5px'><p>Total (&#8377) : </p><p id='bill-total'>0</p> </div>
+	    <div style='display:flex; flex-direction:row; justify-content:center; gap:5px; font-weight:bold;'><p>Total (&#8377) : </p><p id='bill-total'>0</p> </div>
         </br>
 
-        <button
-          type="submit"
-          onclick="handleBilling(event)"
-        >
-          Pay
-        </button>
       </form>
+
+      <button onclick="print()" class="outline-button">Print <i class="fa-solid fa-print"></i></button>
     </section>
   </body>
-
-  <script src="scripts/template.js"></script>
   <script src="scripts/script.js"></script>
-  <script src="scripts/bill.js"></script>
+  <script src="scripts/invoice.js"></script>
 </html>
