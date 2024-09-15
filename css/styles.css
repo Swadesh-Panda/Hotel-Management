@@ -53,6 +53,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0px 5px 10px 0px var(--divider);
 }
 
 a {
@@ -178,18 +179,19 @@ footer {
 }
 
 /* FORM */
-form, #invoice {
+form,
+#invoice {
     display: flex;
     flex-direction: column;
     min-width: 500px;
-    overflow: hidden;
     border: 2px solid var(--divider);
     border-radius: 10px;
     padding: 25px;
     box-shadow: 0px 0px 10px 1px var(--divider);
 }
 
-form header, #invoice header {
+form header,
+#invoice header {
     font-weight: bold;
     color: var(--dark);
 }
@@ -199,12 +201,14 @@ form header, #invoice header {
     grid-template-columns: 50% 50%;
 }
 
-form label, #invoice label {
+form label,
+#invoice label {
     font-size: small;
     font-weight: 600;
 }
 
-input, select{
+input,
+select {
     padding: 12px;
     border-radius: 5px;
     border: 2px solid var(--divider);
@@ -241,36 +245,55 @@ form .err-mssgs {
     position: fixed;
     z-index: 20;
     width: 100vw;
-    height: 100vh;  
+    height: 100vh;
     background-color: #89888887;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 #modal-container {
-    border-radius: 2px;
+    border-radius: 10px;
+    border: 2px solid var(--divider);
     width: 400px;
     min-height: 150px;
     background-color: white;
-    padding: 10px;
-    box-shadow: 0px 0px 10px 0px rgb(102, 101, 101);
+    box-shadow: 0px 0px 30px 0px rgb(102, 101, 101);
     display: flex;
     align-items: center;
     flex-direction: column;
-    justify-content: space-evenly;
+    text-align: center;
+    justify-content: space-between;
 }
 
 #modal-header {
     font-size: x-large;
     font-weight: bold;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 0.3;
+    padding: 10px;
+    border-bottom: 2px dashed var(--divider);
+}
+
+#modal-content {
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    font-weight: 500;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
 }
 
 #home-container {
- display: flex;
- flex-direction: column;
- justify-content: center;
- align-items: center;
- gap: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
 }
 
 #cards-container {
@@ -292,4 +315,56 @@ form .err-mssgs {
     border-radius: 10px;
     padding: 25px;
     box-shadow: 0px 0px 10px 1px var(--divider);
+}
+
+table {
+    border: 2px solid var(--divider);
+    border-collapse: collapse;
+}
+
+thead th {
+    position: sticky !important;
+    background: var(--light);
+    z-index: 1;
+    top: 75px;
+}
+
+th,
+tr,
+td {
+    border: 2px dashed var(--divider);
+    padding: 15px;
+    text-align: center;
+    position: relative;
+}
+
+tr a {
+    color: var(--highlight);
+    text-decoration: underline;
+}
+
+tr .view {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background: linear-gradient(to left, var(--lighter), transparent);
+    height: 100%;
+    width: 20%;
+    display: none;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px;
+}
+
+tr:hover .view {
+    display: flex;
+}
+
+td:nth-last-child(2), th:nth-last-child(1) {
+    border-right: none;
+}
+
+tbody tr:hover {
+    background: var(--lighter);
+    cursor: pointer;
 }

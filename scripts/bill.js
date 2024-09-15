@@ -38,7 +38,8 @@ const handleBilling = (e) => {
     pendingRes['tip'] = parseInt(formBill.tip.value) || 0;
     pendingRes['total'] = pendingRes['roomCharges'] + pendingRes['additionalCharges'] + pendingRes['tip'];
     pendingRes['paymentMode'] = formBill.paymentMode.value;
-    pendingRes['paymentStatus'] = "completed";
+    pendingRes['paymentStatus'] = pendingRes['paymentMode'] === 'card' ? "completed" : "cash";
+    pendingRes['status'] = "requested";
 
     reservation.forEach((r, i) => { if (r.bookingID === pendingRes.bookingID) reservation[i] = pendingRes })
     user.reservation = reservation

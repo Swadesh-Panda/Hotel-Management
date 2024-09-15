@@ -53,8 +53,15 @@
         method="post"
         action="#"
         id="invoice"
+        style="position: relative; box-shadow: none;"
       >
         <header style="text-align: center; font-size:x-large;">INVOICE</header>
+
+        <header
+          id="reset-button"
+          style="color: var(--dark);"
+        >
+        </header>
 
         <br />
 
@@ -100,14 +107,14 @@
 	    </select>
           </div>
           <div class="form-info">
-            <label for="rsContact">Mobile Number</label>
+            <label for="roomNumber">Room No.</label>
             <input
               required
     	      disabled
               type="number"
-              id="rsContact"
-              name="rsContact"
-              placeholder="+91 - XXXXXXXXXX"
+              id="roomNumber"
+              name="roomNumber"
+              placeholder="not assigned"
             />
           </div>
         </div>
@@ -145,6 +152,45 @@
 
         <div class="form-section">
           <div class="form-info">
+            <label for="rsContact">Contact No.</label>
+            <input
+              required
+    	      disabled
+              type="number"
+              id="rsContact"
+              name="rsContact"
+              placeholder="+91 - XXXXXXXXXX"
+            />
+          </div>
+          <div class="form-info">
+            <label for="status">Room Status</label>
+            <input
+              required
+    	      disabled
+              type="text"
+              id="status"
+              name="status"
+              placeholder="requested"
+            />
+          </div>
+        </div>
+
+        <div class="form-section">
+          
+          <div class="form-info">
+            <label for="paymentMode">Payment Mode</label>
+              <select
+                disabled
+                type="select"
+                id="paymentMode"
+                name="paymentMode"
+                placeholder="Cash/Card"
+              >
+                <option value="card">Card</option>
+                <option value="cash">Cash</option>
+              </select>
+          </div>
+          <div class="form-info">
             <label for="roomCharges">Room Charges (&#8377)</label>
             <input
               required
@@ -152,6 +198,19 @@
               type="number"
               id="roomCharges"
               name="roomCharges"
+              placeholder="0"
+            />
+          </div>
+        </div>
+
+        <div class="form-section">
+          <div class="form-info">
+            <label for="tip">Tip (&#8377)</label>
+            <input
+	            disabled
+              type="number"
+              id="tip"
+              name="tip"
               placeholder="0"
             />
           </div>
@@ -165,32 +224,6 @@
               name="additionalCharges"
               placeholder="0"
             />
-          </div>
-        </div>
-
-        <div class="form-section">
-          <div class="form-info">
-            <label for="tip">Tip (&#8377)</label>
-            <input
-	      disabled
-              type="number"
-              id="tip"
-              name="tip"
-              placeholder="0"
-            />
-          </div>
-          <div class="form-info">
-            <label for="paymentMode">Payment Mode</label>
-	    <select
-	      disabled
-              type="select"
-              id="paymentMode"
-              name="paymentMode"
-              placeholder="Cash/Card"
-            >
-		<option value="card">Card</option>
-		<option value="cash">Cash</option>
-	    </select>
           </div>
         </div>
 	</div>

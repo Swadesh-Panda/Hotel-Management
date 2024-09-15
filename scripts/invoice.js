@@ -14,5 +14,8 @@ for (element of invoice.elements) {
     element.value = currentRes[element.name];
 }
 
+const bookingHeader = document.getElementById('reset-button')
+bookingHeader.textContent = `#${bookingID}`
+
 const billTotal = document.querySelector('#bill-total')
 billTotal.textContent = `${currentRes['total']}`
