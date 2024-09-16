@@ -1,11 +1,11 @@
 if(!CurrentUser) location = 'login.html'
 
 const invoice = document.getElementById('invoice')
-const bookingID = new URLSearchParams(location.search).get('bookingID')
+const bookingID = parseInt(new URLSearchParams(location.search).get('bookingID'))
 
 const user = users.find(u => u.email === CurrentUser)
 const reservation = user.reservation || [];
-const currentRes = reservation.find(res => res.bookingID === parseInt(bookingID))
+const currentRes = reservation.find(res => res.bookingID === bookingID)
 
 for (element of invoice.elements) {
     const inp = document.querySelector(`[name="${element.name}"]`)

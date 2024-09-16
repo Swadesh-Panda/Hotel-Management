@@ -4,7 +4,16 @@ const formBill = document.getElementById('form-bill')
 
 const user = users.find(u => u.email === CurrentUser)
 const reservation = user.reservation || [];
-const pendingRes = reservation.find(res => res.paymentStatus === "pending")
+const bookingID = parseInt(new URLSearchParams(location.search).get('bookingID'))
+pendingRes = reservation.slice().reverse().find(res => res.paymentStatus === 'pending')
+
+if (bookingID)
+{
+    pendingRes = reservation.find(res => res.bookingID === bookingID)
+    if (pendingRes.paymentStatus !== 'pending')
+        showModal('Error', `Payment for #${bookingID} is already resolved`, () => history.back())
+
+}
 
 if (!pendingRes) {
     showModal('Message', 'No Pending Reservations', () => history.back())

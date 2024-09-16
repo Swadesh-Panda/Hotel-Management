@@ -5,10 +5,10 @@ const formReservation = document.getElementById('form-reservation')
 const user = users.find(u => u.email === CurrentUser)
 const reservation = user.reservation || [];
 
-const pendingRes = reservation.find(res => res.paymentStatus === "pending")
-if (pendingRes) {
-    showModal('Message', 'Pending reservations must be resolved.', () => {location='bill.html'})
-}
+// const pendingRes = reservation.find(res => res.paymentStatus === "pending")
+// if (pendingRes) {
+//     showModal('Message', 'Pending reservations must be resolved.', () => {location='bill.html'})
+// }
 
 const bookingID = Math.floor(Math.random() * (999999 - 100000 + 1)) + 100000;
 const rsDetails = {'bookingID' : bookingID}
@@ -25,7 +25,7 @@ const handleReservation = (e) => {
                 
         if (!element.value)
         {
-            showErrors(inp, `${element.name} is required`)
+            showErrors(inp, `*${element.parentNode.querySelector('label').textContent} is required`)
             return
         }
             
@@ -39,5 +39,5 @@ const handleReservation = (e) => {
    saveJson('users', users)
    
    form.reset();
-    showModal('Reservation Successful', `Booking Id : ${bookingID}`, () => { location = 'bill.html' })
+    showModal('Reservation Successful', `Booking Id : ${bookingID}`, () => { location = `bill.html?bookingID=${bookingID}` })
 }

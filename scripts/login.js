@@ -16,7 +16,7 @@ const handleLogin = (e) => {
         if (!inp) continue
 
         if (!element.value) {
-            showErrors(inp, `${element.name} is required`)
+            showErrors(inp, `*${element.parentNode.querySelector('label').textContent} is required`)
             flag = false
         }
     }

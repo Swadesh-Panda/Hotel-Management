@@ -10,7 +10,7 @@ const userOptions = document.querySelector('#user-options')
 const logOutButton = document.querySelector('#logOut-button')
 const loginLink = document.querySelector('#login-link')
 
-const navLinks = document.querySelectorAll('.nav_link')
+const navLinks = document.querySelectorAll('.nav-link')
 const pathName = location.pathname
 
 const path = pathName.split('/')
@@ -22,7 +22,7 @@ switch (page) {
         document.title += ' - Barely any Bed n Breakfast'
         break;
     default:
-        document.title += ' | ' + page
+        document.title += ' - ' + page.charAt(0).toUpperCase() + page.slice(1)
         break;
 }
 

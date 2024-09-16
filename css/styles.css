@@ -61,7 +61,7 @@ a {
     text-decoration: none;
 }
 
-.home_link {
+.home-link {
     color: black;
     text-decoration: none;
     margin-left: 60px;
@@ -71,25 +71,21 @@ a {
     font-weight: bold;
 }
 
-.home_link img {
+.home-link img {
     margin-right: 5px;
 }
 
-.nav_container {
+.nav-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    min-width: 35%;
+    gap: 25px;
     margin-right: 60px;
     font-weight: bold;
     /* border: 2px solid red; */
 }
 
-.nav_link {
-    margin: 0px 10px;
-}
-
-.nav_link:hover {
+.nav-link:hover {
     color: var(--highlight);
 }
 
@@ -220,7 +216,8 @@ form .err-mssgs {
     position: absolute;
     font-weight: bold;
     font-style: italic;
-    font-size: small;
+    font-family: sans-serif;
+    font-size: 11px;
     color: var(--danger);
 }
 
@@ -320,9 +317,10 @@ form .err-mssgs {
 table {
     border: 2px solid var(--divider);
     border-collapse: collapse;
+    position: relative;
 }
 
-thead th {
+thead {
     position: sticky !important;
     background: var(--light);
     z-index: 1;
@@ -336,6 +334,11 @@ td {
     padding: 15px;
     text-align: center;
     position: relative;
+    width: max-content;
+}
+
+td:nth-child(2) {
+    text-align: left;
 }
 
 tr a {
@@ -347,7 +350,7 @@ tr .view {
     position: absolute;
     top: 0px;
     right: 0px;
-    background: linear-gradient(to left, var(--lighter), transparent);
+    background: linear-gradient(to left, var(--light), transparent);
     height: 100%;
     width: 20%;
     display: none;
@@ -360,11 +363,46 @@ tr:hover .view {
     display: flex;
 }
 
-td:nth-last-child(2), th:nth-last-child(1) {
+td:nth-last-child(2),
+th:nth-last-child(1) {
     border-right: none;
 }
 
 tbody tr:hover {
     background: var(--lighter);
     cursor: pointer;
+}
+
+.search {
+    background: white;
+    /* box-shadow: 0px 0px 5px 0px var(--divider); */
+    border-radius: 50px;
+    border: 2px solid var(--divider);
+    width: max-content;
+    display: flex;
+    justify-content: space-between;
+    justify-self: start;
+}
+
+.search input {
+    border-radius: 50px 0px 0px 50px;
+    border: none;
+    font-size: medium;
+    padding-left: 18px;
+    /* display: none; */
+}
+
+.search input:focus {
+    outline: none;
+}
+
+.search button {
+    border: none;
+    margin: 5px;
+    height: 38px;
+    width: 38px;
+    font-size: small;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

@@ -2,16 +2,16 @@ if (!CurrentUser) location = 'login.html'
 
 const bookingsTable = document.getElementById('bookings-table')
 const bookingsTableBody = document.getElementById('bookings-table-body')
+const bookingsTableHead = document.getElementById('bookings-table-head')
 
 const user = users.find(u => u.email === CurrentUser)
 const reservation = user.reservation || [];
 
-if (!reservation.length) {
-    document.querySelector('section').innerHTML = 'You haven\'t booked any reservations !!!'
-}
+if (!reservation.length) document.querySelector('section').innerHTML = 'You haven\'t booked any reservations !!!'
 else {
     for (res of reservation) {
-
+        if (location.pathname === '/bookings.html' && new Date() > new Date(res.checkIn)) continue
+        else if (location.pathname === '/history.html' && new Date() < new Date(res.checkIn)) continue
 
         const tableRow = document.createElement('tr')
         const bookingID = document.createElement('td')
@@ -45,7 +45,7 @@ else {
 
         if (res.paymentStatus === 'pending') {
             const bill = document.createElement('a')
-            bill.href = `bill.html?bookingID=${parseInt(bookingID.textContent.replace('#',''))}`
+            bill.href = `bill.html?bookingID=${parseInt(bookingID.textContent.replace('#', ''))}`
             bill.textContent = 'pending'
             payment.appendChild(bill)
         }
@@ -77,7 +77,7 @@ else {
             tableRow.appendChild(view)
         }
 
-        bookingsTableBody.appendChild(tableRow)
+        bookingsTableBody.insertBefore(tableRow, bookingsTableBody.firstChild)
 
         tableRow.addEventListener('click', (e) => {
             if (payment.textContent === "pending") return
@@ -87,3 +87,46 @@ else {
         })
     }
 }
+
+const navHome = document.getElementsByClassName('nav-container')[0]
+navHome.insertAdjacentHTML('beforeend', search)
+
+const searchBar = navHome.querySelector('.search')
+const searchButton = navHome.querySelector('button')
+const searchInput = searchBar.querySelector('input')
+
+const handleSearch = () => {
+    for (row of bookingsTableBody.rows) {
+        flag = false
+        for (cell of row.cells) {
+            if (cell.textContent.toLowerCase().includes(searchInput.value.toLowerCase())) {
+                flag = true;
+                break
+            }
+        }
+
+        if (!flag) {
+            row.style.visibility = 'collapse'
+        }
+        else row.style.visibility = 'visible'
+    }
+
+    const faSearch = `<i class="fas fa-search"></i>`
+    const faTimes = `<i class="fas fa-times"></i>`
+
+    if (searchInput.value) {
+        searchButton.innerHTML = faTimes
+        searchButton.onclick = () => { clearSearch() }
+    }
+    else {
+        searchButton.innerHTML = faSearch
+        searchButton.onclick = () => { handleSearch() }
+    }
+}
+
+const clearSearch = () => {
+    searchInput.value = ''
+    handleSearch()
+}
+
+searchInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') handleSearch() })
