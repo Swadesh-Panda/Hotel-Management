@@ -1,4 +1,4 @@
-if (CurrentUser) location = 'index.html'
+if (currentUser) location = 'index.html'
 
 const formLogin = document.getElementById('form-login')
 const quip = document.getElementById('quip')
@@ -26,6 +26,13 @@ const handleLogin = (e) => {
         const username = form.username.value
         const password = form.password.value
 
+        if (username === admin.username && password === admin.password) {
+
+            localStorage.setItem('currentUser', admin.customerID)
+            location = 'index.html'
+            return
+        }
+
         const checkUser = users.find(user => user.email === username || user.customerID === parseInt(username))
         if (!checkUser) {
             showErrors(form.username, "No record found")
@@ -39,7 +46,7 @@ const handleLogin = (e) => {
 
 
 
-        localStorage.setItem('CurrentUser',checkUser.email)
+        localStorage.setItem('currentUser', checkUser.customerID)
         location = 'index.html'
     }
 }

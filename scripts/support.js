@@ -1,6 +1,6 @@
 if (!currentUser) location = 'login.html'
 
-const formReservation = document.getElementById('form-reservation')
+const formSupport = document.getElementById('form-support')
 
 const user = users.find(u => u.customerID === currentUser)
 const reservation = user.reservation || [];

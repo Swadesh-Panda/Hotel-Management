@@ -1,14 +1,13 @@
-if (!CurrentUser) location = 'login.html'
+if (!currentUser) location = 'login.html'
 
 const formBill = document.getElementById('form-bill')
 
-const user = users.find(u => u.email === CurrentUser)
+const user = users.find(u => u.customerID === currentUser)
 const reservation = user.reservation || [];
 const bookingID = parseInt(new URLSearchParams(location.search).get('bookingID'))
 pendingRes = reservation.slice().reverse().find(res => res.paymentStatus === 'pending')
 
-if (bookingID)
-{
+if (bookingID) {
     pendingRes = reservation.find(res => res.bookingID === bookingID)
     if (pendingRes.paymentStatus !== 'pending')
         showModal('Error', `Payment for #${bookingID} is already resolved`, () => history.back())

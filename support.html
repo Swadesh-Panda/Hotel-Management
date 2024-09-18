@@ -12,6 +12,10 @@
       href="css/styles.css"
     />
     <link
+      rel="stylesheet"
+      href="css/login.css"
+    />
+    <link
       rel="preconnect"
       href="https://fonts.googleapis.com"
     />
@@ -39,9 +43,77 @@
   </head>
 
   <body>
-    <section>Customer Support page.</section>
+    <section>
+      <div id="quip">
+        <h1>Get In Touch</h1>
+        <p>Got something to say? Drop us a message and we'll shortly get back to you!</p>
+        <a style="font-size: small; color: var(--highlight); display: inline-flex; gap: 10px">
+          +91 7008233981
+          <p style="color: black"> | </p>
+          barelybnbltd@email.com</a
+        >
+      </div>
+
+      <form
+        method="post"
+        action="#"
+        id="form-support"
+        style="position: relative"
+      >
+        <header style="text-align: center; font-size: x-large">Contact Us</header>
+
+        <button
+          type="reset"
+          id="reset-button"
+          class="form-button"
+        >
+          <i
+            class="fa fa-refresh"
+            aria-hidden="true"
+          ></i>
+        </button>
+
+        <div
+          class="form-section"
+          style="grid-template-columns: 100%"
+        >
+          <div class="form-info">
+            <label for="subject">Subject</label>
+            <input
+              required
+              type="text"
+              id="subject"
+              name="subject"
+              placeholder="Enter a subject for your message"
+            />
+          </div>
+          <div class="form-info">
+            <label for="message">Message / Feedback</label>
+            <textarea
+              required
+              type="text"
+              id="message"
+              name="message"
+              placeholder="Write your message..."
+              rows="10"
+              style="resize: none"
+            ></textarea>
+          </div>
+        </div>
+
+        <br />
+
+        <button
+          type="submit"
+          onclick="handleReservation(event)"
+        >
+          Send
+        </button>
+      </form>
+    </section>
   </body>
 
   <script src="scripts/template.js"></script>
   <script src="scripts/script.js"></script>
+  <script src="scripts/support.js"></script>
 </html>

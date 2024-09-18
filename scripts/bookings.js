@@ -1,91 +1,36 @@
-if (!CurrentUser) location = 'login.html'
+if (!currentUser) location = 'login.html'
 
 const bookingsTable = document.getElementById('bookings-table')
 const bookingsTableBody = document.getElementById('bookings-table-body')
 const bookingsTableHead = document.getElementById('bookings-table-head')
 
-const user = users.find(u => u.email === CurrentUser)
-const reservation = user.reservation || [];
+const user = users.find(u => u.customerID === currentUser)
+const reservation = currentUser === 1 ? users.flatMap(user => user.reservation) : user.reservation || [];
 
-if (!reservation.length) document.querySelector('section').innerHTML = 'You haven\'t booked any reservations !!!'
-else {
-    for (res of reservation) {
-        if (location.pathname === '/bookings.html' && new Date() > new Date(res.checkIn)) continue
-        else if (location.pathname === '/history.html' && new Date() < new Date(res.checkIn)) continue
+const handleStatus = (status) => {
+    const modalHeader = document.querySelector('#modal-header')
+    bookingID = parseInt(modalHeader.textContent.split('#')[1])
 
-        const tableRow = document.createElement('tr')
-        const bookingID = document.createElement('td')
-        const guestName = document.createElement('td')
-        const checkIn = document.createElement('td')
-        const checkOut = document.createElement('td')
-        const roomNuber = document.createElement('td')
-        const roomType = document.createElement('td')
-        const price = document.createElement('td')
-        const payment = document.createElement('td')
-        const status = document.createElement('td')
+    reservation.forEach((r, i) => {
+        if (r.bookingID === bookingID) {
+            roomNumber = Math.floor(Math.random() * (999 - 100 + 1)) + 100;
+            reservation[i]['status'] = status
+            reservation[i]['roomNumber'] = roomNumber
 
-        bookingID.textContent = `#${res.bookingID || '---'}`
-        guestName.textContent = `${res.rsFname || '---'} ${res.rsLname || ''}`
-        checkIn.textContent = `${res.checkIn || '---'}`
-        checkOut.textContent = `${res.checkOut || '---'}`
-        roomNuber.textContent = `${res.roomNuber || '---'}`
-        roomType.textContent = `${res.roomType || '---'}`
-        price.textContent = `${res.total || '---'}`
-        status.textContent = `${res.status || '---'}`
+            let resUser = users.find(u => u.reservation.find(res => res.bookingID === bookingID))
+            resUser.reservation.forEach((res, j) => {
+                if (res.bookingID === bookingID) {
+                    resUser.reservation[j] = reservation[i]
+                }
+            })
 
-        bookingID.setAttribute('data-label', 'bookingID')
-        guestName.setAttribute('data-label', 'guestName')
-        checkIn.setAttribute('data-label', 'checkIn')
-        checkOut.setAttribute('data-label', 'checkOut')
-        roomNuber.setAttribute('data-label', 'roomNuber')
-        roomType.setAttribute('data-label', 'roomType')
-        price.setAttribute('data-label', 'price')
-        payment.setAttribute('data-label', 'payment')
-        status.setAttribute('data-label', 'status')
 
-        if (res.paymentStatus === 'pending') {
-            const bill = document.createElement('a')
-            bill.href = `bill.html?bookingID=${parseInt(bookingID.textContent.replace('#', ''))}`
-            bill.textContent = 'pending'
-            payment.appendChild(bill)
+            users.forEach((u, i) => { if (u.customerID === resUser.customerID) users[i] = resUser })
+            saveJson('users', users)
         }
-        else payment.textContent = `${res.paymentStatus}`
+    })
 
-        switch (res.status) {
-            case 'accepted':
-                status.style.color = 'yellowgreen';
-            case 'rejected':
-                status.style.color = 'orangered';
-            default:
-                status.style.color = 'black';
-        }
-
-        tableRow.appendChild(bookingID)
-        tableRow.appendChild(guestName)
-        tableRow.appendChild(checkIn)
-        tableRow.appendChild(checkOut)
-        tableRow.appendChild(roomNuber)
-        tableRow.appendChild(roomType)
-        tableRow.appendChild(price)
-        tableRow.appendChild(payment)
-        tableRow.appendChild(status)
-
-        if (res.paymentStatus !== 'pending') {
-            view = document.createElement('div')
-            view.innerHTML = `<i class="fa-solid fa-download"></i>`
-            view.classList.add('view')
-            tableRow.appendChild(view)
-        }
-
-        bookingsTableBody.insertBefore(tableRow, bookingsTableBody.firstChild)
-
-        tableRow.addEventListener('click', (e) => {
-            if (payment.textContent === "pending") return
-
-            id = parseInt(bookingID.textContent.replace('#', ''))
-            open(`invoice.html?bookingID=${id}`)
-        })
-    }
+    location.reload()
 }
 
 const navHome = document.getElementsByClassName('nav-container')[0]
@@ -111,6 +56,8 @@ const handleSearch = () => {
         else row.style.visibility = 'visible'
     }
 
+    // bookingsTableBody.innerHTML = 'no reservations found'
+
     const faSearch = `<i class="fas fa-search"></i>`
     const faTimes = `<i class="fas fa-times"></i>`
 
@@ -130,3 +77,96 @@ const clearSearch = () => {
 }
 
 searchInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') handleSearch() })
+
+
+if (!reservation.length) document.querySelector('section').innerHTML = 'You haven\'t booked any reservations !!!'
+else {
+    for (res of reservation) {
+        if (page === 'bookings' && new Date() > new Date(res.checkIn)) continue
+        else if (page === 'history' && new Date() < new Date(res.checkIn)) continue
+
+
+        let tableRow = document.createElement('tr')
+        let bookingID = document.createElement('td')
+        let guestName = document.createElement('td')
+        let checkIn = document.createElement('td')
+        let checkOut = document.createElement('td')
+        let roomNumber = document.createElement('td')
+        let roomType = document.createElement('td')
+        let price = document.createElement('td')
+        let payment = document.createElement('td')
+        let status = document.createElement('td')
+
+        bookingID.textContent = `#${res.bookingID || '---'}`
+        guestName.textContent = `${res.rsFname || '---'} ${res.rsLname || ''}`
+        checkIn.textContent = `${res.checkIn || '---'}`
+        checkOut.textContent = `${res.checkOut || '---'}`
+        roomNumber.textContent = `${res.roomNumber || '---'}`
+        roomType.textContent = `${res.roomType || '---'}`
+        price.textContent = `${res.total || '---'}`
+
+        if (res.paymentStatus === 'pending' && currentUser !== 1) {
+            const bill = document.createElement('a')
+            bill.href = `bill.html?bookingID=${parseInt(bookingID.textContent.replace('#', ''))}`
+            bill.textContent = 'pending'
+            payment.appendChild(bill)
+        }
+        else payment.textContent = `${res.paymentStatus || '---'}`
+
+        if (res.status === 'requested' && currentUser === 1) {
+            const statusButton = document.createElement('a')
+            statusButton.onclick = () => {
+                showModal(`Reservation ${bookingID.textContent}`,
+                    `<span id='status-container' style='display: inline-flex; gap: 50px'>
+                        <button onclick="handleStatus('accepted')" class='outline-button'><i class="fa-solid fa-check"></i> ACCEPT</button>
+                        <button onclick="handleStatus('rejected')" class='outline-button'><i class="fa-solid fa-times"></i> REJECT</button>
+                        </span>`)
+            }
+            statusButton.textContent = 'requested'
+            status.appendChild(statusButton)
+        }
+        else status.textContent = `${res.status || '---'}`
+
+        bookingID.setAttribute('data-label', 'bookingID')
+        guestName.setAttribute('data-label', 'guestName')
+        checkIn.setAttribute('data-label', 'checkIn')
+        checkOut.setAttribute('data-label', 'checkOut')
+        roomNumber.setAttribute('data-label', 'roomNumber')
+        roomType.setAttribute('data-label', 'roomType')
+        price.setAttribute('data-label', 'price')
+        payment.setAttribute('data-label', 'payment')
+        status.setAttribute('data-label', 'status')
+
+        tableRow.appendChild(bookingID)
+        tableRow.appendChild(guestName)
+        tableRow.appendChild(checkIn)
+        tableRow.appendChild(checkOut)
+        tableRow.appendChild(roomNumber)
+        tableRow.appendChild(roomType)
+        tableRow.appendChild(price)
+        tableRow.appendChild(payment)
+        tableRow.appendChild(status)
+
+        if(status.textContent === 'accepted') status.style.color = 'yellowgreen';
+        if(status.textContent === 'rejected') status.style.color = 'orangered';
+
+        if ((res.paymentStatus !== 'pending' && currentUser !== 1) || (res.status === 'accepted' && currentUser === 1)) {
+            view = document.createElement('div')
+            view.innerHTML = `<i class="fa-solid fa-download"></i>`
+            view.classList.add('view')
+            tableRow.appendChild(view)
+        }
+
+        bookingsTableBody.insertBefore(tableRow, bookingsTableBody.firstChild)
+
+        tableRow.addEventListener('click', (e) => {
+            if (payment.textContent === "pending") return
+
+            if (currentUser === 1)
+                if (status.textContent !== 'accepted') return
+
+            id = parseInt(bookingID.textContent.replace('#', ''))
+            open(`invoice.html?bookingID=${id}`)
+        })
+    }
+}

@@ -1,9 +1,9 @@
-if(!CurrentUser) location = 'login.html'
+if (!currentUser) location = 'login.html'
 
 const invoice = document.getElementById('invoice')
 const bookingID = parseInt(new URLSearchParams(location.search).get('bookingID'))
 
-const user = users.find(u => u.email === CurrentUser)
+const user = users.find(u => u.customerID === currentUser)
 const reservation = user.reservation || [];
 const currentRes = reservation.find(res => res.bookingID === bookingID)
 

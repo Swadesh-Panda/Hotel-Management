@@ -14,24 +14,18 @@ const nav = `
         <a class="nav-link" href="history.html">Order history</a>
 
         <div class="user-container">
-            <a href="bill.html">
-                <button class="outline-button">
-                    Bill
-                    <i class="fa-solid fa-file-invoice"></i>
-                </button>
-            </a>
-            
-            <a id='login-link' href="login.html">
-            <button id="user-button">
-                    Sign in
-                    <i class="fa-regular fa-circle-user"></i>
+            <button onclick='{location = "bill.html"}' class="outline-button">
+                Bill
+                <i class="fa-solid fa-file-invoice"></i>
             </button>
-            </a>
             
-            <ul id="user-options">
-                <a href="support.html">
-                <li><button>Customer Support</button></li>
-                </a>
+            <button onclick='{location = "login.html"}' id="user-button">
+                Sign in
+                <i class="fa-regular fa-circle-user"></i>
+            </button>
+            
+            <ul id="user-options">  
+                <li><button onclick='{location = "support.html"}' >Contact Us</button></li>
                 <li><button id='logOut-button' onclick='handleLogout(event)'>Log Out</button></li>
             </ul>
         </div>

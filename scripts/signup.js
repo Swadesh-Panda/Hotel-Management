@@ -1,4 +1,4 @@
-if (CurrentUser) location = 'index.html'
+if (currentUser) location = 'index.html'
 
 const formPersonal = document.getElementById('form-personal')
 const formSignup = document.getElementById('form-signup')
@@ -60,7 +60,7 @@ const handleSignup = (e) => {
     user.password = newPassword
     users.push(user)
     saveJson('users', users)
-    localStorage.setItem('CurrentUser', user.email)
+    localStorage.setItem('currentUser', user.customerID)
 
     showModal('Registration Successful', `Customer Id : ${customerID}`, () => { location = 'index.html' })
 }
